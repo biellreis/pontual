@@ -218,7 +218,6 @@ export default function DataTable({ data, searchQuery, isPrinting = false, onUpd
             </tr>
           </thead>
           <tbody>
-            <AnimatePresence mode="wait">
               {pageData.length === 0 ? (
                 <tr>
                   <td colSpan={9} className="px-4 py-16 text-center">
@@ -232,12 +231,8 @@ export default function DataTable({ data, searchQuery, isPrinting = false, onUpd
                 </tr>
               ) : (
                 pageData.map((row, i) => (
-                  <motion.tr
+                  <tr
                     key={`${row.nome_servidor}-${row.data}-${row.tipo}-${i}`}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 8 }}
-                    transition={{ duration: 0.2, delay: i * 0.03 }}
                     className="border-b border-[var(--color-border-subtle)] transition-colors hover:bg-[var(--color-surface-hover)]"
                   >
                     <td className="whitespace-nowrap px-4 py-3 font-medium text-[var(--color-text-primary)]">
@@ -269,10 +264,9 @@ export default function DataTable({ data, searchQuery, isPrinting = false, onUpd
                     <td className="px-4 py-3">
                       <JustificativaCell row={row} isPrinting={isPrinting} onUpdate={onUpdateJustificativa} />
                     </td>
-                  </motion.tr>
+                  </tr>
                 ))
               )}
-            </AnimatePresence>
           </tbody>
         </table>
       </div>
