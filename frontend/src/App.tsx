@@ -261,11 +261,11 @@ function ConfiguracoesPage() {
 // ────────────────────────────────────────────────────────────────────────────
 
 function AuthenticatedApp() {
-  const [activePage, setActivePage] = useState<PageId>(() => {
-    return (localStorage.getItem('activePage') as PageId) || 'dashboard';
-  });
+  const [activePage, setActivePage] = useState<PageId>('importar');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Keep localStorage sync optional, but when the app starts, we want them on 'importar' 
+  // until they upload a spreadsheet, as requested.
   useEffect(() => {
     localStorage.setItem('activePage', activePage);
   }, [activePage]);

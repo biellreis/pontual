@@ -26,19 +26,15 @@ export default function KPICard({ title, value, subtitle, icon, color, trend, tr
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, transform: "translateY(24px) scale(0.95)" }}
+      animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
       transition={{
         duration: 0.5,
         delay: index * 0.1,
-        ease: [0.34, 1.56, 0.64, 1],
+        ease: [0.34, 1.56, 0.64, 1], // Spring-like ease
       }}
-      whileHover={{
-        y: -3,
-        scale: 1.02,
-        boxShadow: `0 8px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04), 0 0 20px ${c.glow}`,
-      }}
-      className="card glow-hover relative overflow-hidden p-5"
+      className="card glow-hover card-interactive relative overflow-hidden p-5"
+      style={{ '--glow-color': c.glow } as any}
     >
       {/* Background gradient accent */}
       <div
