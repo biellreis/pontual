@@ -218,7 +218,7 @@ export default function DataTable({ data, searchQuery, isPrinting = false, onUpd
             </tr>
           </thead>
           <tbody>
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="wait">
               {pageData.length === 0 ? (
                 <tr>
                   <td colSpan={9} className="px-4 py-16 text-center">
